@@ -1,5 +1,31 @@
 // Vitest Snapshot v1
 
+exports[`js test > Snapshot of comparison results 1`] = `
+"# Bundle Size
+| Route | Size (gzipped) |
+| --- | --- |
+| \`app\` | 16.43 kB (🟢 -5.71 kB) |
+| \`commons/app\` | 68.43 kB (🟢 -22.45 kB) |
+| \`components/nuxt-logo\` | 1.01 kB (added) |
+| \`components/tutorial\` | 2.94 kB (🔴 7 B) |
+| \`pages/index\` | 3.01 kB (🔴 1.88 kB) |
+| \`runtime\` | 1.2 kB (🟢 -235 B) |
+| \`pages/test\` | removed |"
+`;
+
+exports[`js test > comparison results test 1`] = `
+"# Bundle Size
+| Route | Size (gzipped) |
+| --- | --- |
+| \`app\` | 16.43 kB (🟢 -5.71 kB) |
+| \`commons/app\` | 68.43 kB (🟢 -22.45 kB) |
+| \`components/nuxt-logo\` | 1.01 kB (added) |
+| \`components/tutorial\` | 2.94 kB (🔴 7 B) |
+| \`pages/index\` | 3.01 kB (🔴 1.88 kB) |
+| \`runtime\` | 1.2 kB (🟢 -235 B) |
+| \`pages/test\` | removed |"
+`;
+
 exports[`ts test > Snapshot of comparison results 1`] = `
 "# Bundle Size
 | Route | Size (gzipped) |

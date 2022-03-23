@@ -9,7 +9,7 @@ const options = getOptions();
 
 const buildOutputDir = path.join(
   process.cwd(),
-  getBuildOutputDirectory(options),
+  getBuildOutputDirectory(options)
 );
 
 const outdir = path.join(buildOutputDir, 'analyze');
@@ -17,12 +17,12 @@ const outfile = path.join(outdir, '__bundle_analysis_comment.txt');
 
 const currentBundle = require(path.join(
   buildOutputDir,
-  'analyze/__bundle_analysis.json',
+  'analyze/__bundle_analysis.json'
 ));
 
 const baseBundle = require(path.join(
   buildOutputDir,
-  'analyze/base/bundle/__bundle_analysis.json',
+  'analyze/base/bundle/__bundle_analysis.json'
 ));
 
 const removedSizes = baseBundle
@@ -53,10 +53,12 @@ const sizes = currentBundle
   .concat(removedSizes)
   .join('\n');
 
-const output =
-  sizes === ''
-    ? 'This PR introduced no changes to the javascript bundle.'
-    : `# Bundle Size
+if (sizes === '') {
+  // If no changes are made, messages are generated on the GitHub Actions side.
+  process.exit();
+}
+
+const output = `# Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
 ${sizes}`;

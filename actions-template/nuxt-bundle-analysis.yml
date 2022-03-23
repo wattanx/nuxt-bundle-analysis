@@ -1,4 +1,4 @@
-name: "Nuxt.js Bundle Analysis"
+name: 'Nuxt.js Bundle Analysis'
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: '14.x'
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -55,10 +55,14 @@ jobs:
         id: get-comment-body
         if: success() && github.event.number
         run: |
-          body=$(cat .nuxt/analyze/__bundle_analysis_comment.txt)
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
+          if [ ! -e ".nuxt/analyze/__bundle_analysis_comment.txt" ]; then
+            body="This PR introduced no changes to the javascript bundle."
+          else
+            body=$(cat .nuxt/analyze/__bundle_analysis_comment.txt)
+            body="${body//'%'/'%25'}"
+            body="${body//$'\n'/'%0A'}"
+            body="${body//$'\r'/'%0D'}"
+          fi
           echo ::set-output name=body::$body
       - name: Find Comment
         uses: peter-evans/find-comment@v1
@@ -66,7 +70,7 @@ jobs:
         id: fc
         with:
           issue-number: ${{ github.event.number }}
-          body-includes: "<!-- __NUXTJS_BUNDLE -->"
+          body-includes: '<!-- __NUXTJS_BUNDLE -->'
 
       - name: Create Comment
         uses: peter-evans/create-or-update-comment@v1.4.4
