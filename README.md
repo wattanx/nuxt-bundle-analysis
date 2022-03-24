@@ -4,6 +4,8 @@ Analyzes each PR's impact on your nuxt.js app's bundle size and displays it usin
 By combining this script with a github actions, it is possible to send bundle size measurement results to Pull Request.
 (Nuxt3 is not supported)
 
+> ⚠️ It is not an npm package, so please copy it to your own project.
+
 ![image](https://user-images.githubusercontent.com/43837308/159209639-518f7136-e471-41d0-8305-a67265432082.png)
 
 
