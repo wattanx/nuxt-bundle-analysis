@@ -58,7 +58,11 @@ if (sizes === '') {
   process.exit();
 }
 
-const output = `# Bundle Size
+// To override the comment, use <! -- __NUXTJS_BUNDLE --> to mark it.
+// Actions jobs name is 'Update Comment'
+const output = `
+<!-- __NUXTJS_BUNDLE -->
+# Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
 ${sizes}`;
