@@ -1,1 +1,6 @@
-[{"path":"app","size":16431},{"path":"commons/app","size":68429},{"path":"components/nuxt-logo","size":1006},{"path":"components/tutorial","size":2944},{"path":"pages/index","size":3011},{"path":"runtime","size":1203}]
+[
+  { "path": "app", "size": 86063 },
+  { "path": "pages/index", "size": 3011 },
+  { "path": "components/nuxt-logo", "size": 1006 },
+  { "path": "components/tutorial", "size": 2944 }
+]

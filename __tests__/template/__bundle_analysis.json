@@ -1,8 +1,6 @@
 [
-  { "path": "app", "size": 22138 },
-  { "path": "commons/app", "size": 90874 },
-  { "path": "components/tutorial", "size": 2937 },
-  { "path": "pages/index", "size": 1130 },
-  { "path": "pages/test", "size": 1130 },
-  { "path": "runtime", "size": 1438 }
+  { "path": "app", "size": 90000 },
+  { "path": "pages/index", "size": 2011 },
+  { "path": "components/tutorial", "size": 2944 },
+  { "path": "pages/test", "size": 1130 }
 ]

@@ -24,14 +24,12 @@ describe('ts test', () => {
     const splitContents = contents.split('\n');
 
     // decreased
-    expect(splitContents.find((x) => x.includes('commons/app'))).toContain(
-      '🟢'
-    );
+    expect(splitContents.find((x) => x.includes('app'))).toContain('🟢');
 
     // increased
-    expect(
-      splitContents.find((x) => x.includes('components/tutorial'))
-    ).toContain('🔴');
+    expect(splitContents.find((x) => x.includes('pages/index'))).toContain(
+      '🔴'
+    );
 
     // removed
     expect(splitContents.find((x) => x.includes('pages/test'))).toContain(
@@ -97,14 +95,12 @@ describe('js test', () => {
     const splitContents = contents.split('\n');
 
     // decreased
-    expect(splitContents.find((x) => x.includes('commons/app'))).toContain(
-      '🟢'
-    );
+    expect(splitContents.find((x) => x.includes('app'))).toContain('🟢');
 
     // increased
-    expect(
-      splitContents.find((x) => x.includes('components/tutorial'))
-    ).toContain('🔴');
+    expect(splitContents.find((x) => x.includes('pages/index'))).toContain(
+      '🔴'
+    );
 
     // removed
     expect(splitContents.find((x) => x.includes('pages/test'))).toContain(

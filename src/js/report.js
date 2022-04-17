@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const zlib = require("zlib");
-const filesize = require("filesize");
-const mkdirp = require("mkdirp");
+const fs = require('fs');
+const path = require('path');
+const zlib = require('zlib');
+const mkdirp = require('mkdirp');
+
+const memoryCache = {};
 
 const {
   getBuildOutputDirectory,
   getOptions,
   getStatsFilePath,
-} = require("./utils");
+} = require('./utils');
 
 const options = getOptions();
 
@@ -30,20 +31,30 @@ try {
   process.exit(1);
 }
 
-const allPageSizes = Object.entries(statsFile.assetsByChunkName).map(
+const allPageSizes = Object.entries(statsFile.namedChunkGroups).map(
   ([key, value]) => {
-    const bytes = fs.readFileSync(
-      path.join(buildOutputDir, "dist/client", value)
-    );
-    const gzipped = zlib.gzipSync(bytes).byteLength;
+    const size = value.assets
+      .map((x) => {
+        const scriptPath = path.join(buildOutputDir, 'dist/client', x);
 
-    return { path: key, size: gzipped };
+        if (Object.keys(memoryCache).includes(scriptPath)) {
+          return memoryCache[scriptPath];
+        }
+
+        const bytes = fs.readFileSync(scriptPath, 'utf8');
+        const gzipSize = zlib.gzipSync(bytes).byteLength;
+        memoryCache[scriptPath] = gzipSize;
+
+        return gzipSize;
+      })
+      .reduce((s, b) => s + b, 0);
+    return { path: key, size };
   }
 );
 
 const rawData = JSON.stringify(allPageSizes);
-mkdirp.sync(path.join(buildOutputDir, "analyze/"));
+mkdirp.sync(path.join(buildOutputDir, 'analyze/'));
 fs.writeFileSync(
-  path.join(buildOutputDir, "analyze/__bundle_analysis.json"),
+  path.join(buildOutputDir, 'analyze/__bundle_analysis.json'),
   rawData
 );

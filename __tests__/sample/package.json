@@ -7,8 +7,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "report:ts": "node -r esbuild-register ../../src/ts/report.ts",
-    "compare:ts": "node -r esbuild-register ../../src/ts/compare.ts",
+    "report:ts": "ts-node --project ../../src/ts/tsconfig.json ../../src/ts/report.ts",
+    "compare:ts": "ts-node --project ../../src/ts/tsconfig.json ../../src/ts/compare.ts",
     "report:js": "node ../../src/js/report.js",
     "compare:js": "node ../../src/js/compare.js"
   },
