@@ -1,6 +1,6 @@
 {
   "name": "nuxt-bundle-analysis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Analyzes each PR's impact on your nuxt.js app's bundle size and displays it using a comment.",
   "main": "index.js",
   "bin": {
@@ -8,6 +8,10 @@
     "report": "dist/report.js",
     "compare": "dist/compare.js"
   },
+  "files": [
+    "dist",
+    "actions-template"
+  ],
   "scripts": {
     "test": "vitest run",
     "test:update": "vitest -u",
