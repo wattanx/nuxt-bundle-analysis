@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
@@ -18,7 +20,7 @@ function getScriptSize(scriptPath: string) {
   return gzipSize;
 }
 
-export async function generateAnalysisJson() {
+async function generateAnalysisJson() {
   const options = await getOptions();
   const buildOutputDir = path.join(
     process.cwd(),
@@ -61,3 +63,5 @@ export async function generateAnalysisJson() {
     rawData
   );
 }
+
+generateAnalysisJson();
