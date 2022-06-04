@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import filesize from 'filesize';
 import fs from 'fs';
 import path from 'path';

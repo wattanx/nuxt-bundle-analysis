@@ -1,0 +1,45 @@
+name: Publish to NPM
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Can Publish
+        run: npx can-npm-publish --verbose
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: Install
+        run: 'yarn --frozen-lockfile'
+
+      - name: Build
+        run: yarn build
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: tag
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag $(bash scripts/release.sh)
+          git push --tags

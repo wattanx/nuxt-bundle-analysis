@@ -2,11 +2,13 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "outDir": "dist",
     "types": ["vitest/globals"]
   }
 }
