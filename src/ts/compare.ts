@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import filesize from 'filesize';
 import fs from 'fs';
 import path from 'path';
@@ -10,7 +8,7 @@ function createTableRow(path: string, size: number, diffStr: string) {
   return `| \`${path}\` | ${filesize(size)} (${diffStr}) |`;
 }
 
-async function compare() {
+export async function compare() {
   const options = await getOptions();
 
   const buildOutputDir = path.join(
@@ -79,5 +77,3 @@ ${sizes}`;
 
   fs.writeFileSync(outfile, output);
 }
-
-compare();
