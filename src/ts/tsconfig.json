@@ -3,6 +3,5 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node"
-  },
-  "include": ["./index.ts"]
+  }
 }
