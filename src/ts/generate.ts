@@ -30,7 +30,7 @@ inquirer
 
     const templatePath = path.join(
       __dirname,
-      'actions-template/nuxt-bundle-analysis.yml'
+      '../actions-template/nuxt-bundle-analysis.yml'
     );
 
     const destinationPath = path.join(
