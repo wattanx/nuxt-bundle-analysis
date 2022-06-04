@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "Analyzes each PR's impact on your nuxt.js app's bundle size and displays it using a comment.",
   "main": "index.js",
+  "type": "module",
   "bin": {
     "generate": "dist/generate.js",
     "report": "dist/report.js",
