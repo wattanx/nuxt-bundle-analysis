@@ -16,7 +16,7 @@
     "test": "vitest run",
     "test:update": "vitest -u",
     "minor": "npm version minor",
-    "build": "tsc --project src/ts/tsconfig.json"
+    "build": "tsc --project src/tsconfig.json"
   },
   "repository": {
     "type": "git",

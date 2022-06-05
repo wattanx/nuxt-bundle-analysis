@@ -4,14 +4,17 @@ Analyzes each PR's impact on your nuxt.js app's bundle size and displays it usin
 By combining this script with a github actions, it is possible to send bundle size measurement results to Pull Request.
 (Nuxt3 is not supported)
 
-> ⚠️ It is not an npm package, so please copy it to your own project.
-
 ![image](https://user-images.githubusercontent.com/43837308/159209639-518f7136-e471-41d0-8305-a67265432082.png)
 
+## Installation
 
-## Usage
+1. Run the following command. The command will create a `.github/workflows` directory in your project root and add a `nuxt_bundle_analysis.yml` file to it - that's all it takes!
 
-1. Setting nuxt.config.js and Build.
+```bash
+npx -p nuxt-bundle-analysis generate
+```
+
+2. Setting nuxt.config.js and Build.
    Set nuxt.config.js as follows so that bundle statistics are output.
    After configuration and build, `.nuxt/stats.client.json` will be output.
 
@@ -27,9 +30,10 @@ export default {
 };
 ```
 
-2. Setting package.json
-   This script uses the settings described in package.json. `nuxtBundleAnalysis`
-   See [here](#Options) for options.
+## Configuration
+
+This script uses the settings described in package.json. `nuxtBundleAnalysis`
+See [here](#Options) for options.
 
 ```json:package.json
 "devDependencies": {},
@@ -38,14 +42,13 @@ export default {
 }
 ```
 
-3. Run `report.js` or `report.ts`
-   `report.js` or `report.ts` calculates bundle size based on ` statsFile` and outputs data for comparison.(`analyze/__bundle_analysis.json` is generated.)
+## Description of each script
 
-4. Create `__bundle_analysis.json` as a basis for comparison.
-   Create `__bundle.analysis.json` in `analyze/base/bundle` for comparison.
+- `report.ts`
+  `report.ts` calculates bundle size based on ` statsFile` and outputs data for comparison.(`analyze/__bundle_analysis.json` is generated.)
 
-5. Run `compare.js` or `compare.ts`
-   `compare.js` or `compare.ts` compares `analyze/base/bundle/__bundle_analysis.json` and `analyze/__bundle_analysis.json` and generates a text file containing the difference in bundle size The following is an example of the process.(`analyze/__bundle_analysis_comment.txt` is generated.)
+- `compare.ts`
+  `compare.ts` compares `analyze/base/bundle/__bundle_analysis.json` and `analyze/__bundle_analysis.json` and generates a text file containing the difference in bundle size The following is an example of the process.(`analyze/__bundle_analysis_comment.txt` is generated.)
 
 ## Options
 
