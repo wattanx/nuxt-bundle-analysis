@@ -4,7 +4,11 @@ import filesize from 'filesize';
 import fs from 'fs';
 import path from 'path';
 import { BundleAnalysisType } from './types';
-import { getBuildOutputDirectory, getOptions } from './utils';
+import {
+  getBuildOutputDirectory,
+  getOptions,
+  getMinimumChangeThreshold,
+} from './utils';
 
 function createTableRow(path: string, size: number, diffStr: string) {
   return `| \`${path}\` | ${filesize(size)} (${diffStr}) |`;
@@ -12,6 +16,8 @@ function createTableRow(path: string, size: number, diffStr: string) {
 
 async function compare() {
   const options = await getOptions();
+
+  const minimumChangeThreshold = getMinimumChangeThreshold(options);
 
   const buildOutputDir = path.join(
     process.cwd(),
@@ -43,7 +49,7 @@ async function compare() {
 
       const diffSize = size - basefile.size;
 
-      if (diffSize === 0) {
+      if (diffSize === 0 || Math.abs(diffSize) < minimumChangeThreshold) {
         return '';
       }
 

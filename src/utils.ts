@@ -26,3 +26,9 @@ export const getBuildOutputDirectory = (options: NuxtBundleAnalysisOptions) => {
 export const getStatsFilePath = (options: NuxtBundleAnalysisOptions) => {
   return options.statsFile || '.nuxt/stats/client.json';
 };
+
+export const getMinimumChangeThreshold = (
+  options: NuxtBundleAnalysisOptions
+): number => {
+  return options.minimumChangeThreshold || 0;
+};
