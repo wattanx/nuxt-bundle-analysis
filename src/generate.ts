@@ -35,7 +35,7 @@ inquirer
 
     const destinationPath = path.join(
       workflowsPath,
-      'nextjs_bundle_analysis.yml'
+      'nuxtjs_bundle_analysis.yml'
     );
     fs.copyFileSync(templatePath, destinationPath);
   });
