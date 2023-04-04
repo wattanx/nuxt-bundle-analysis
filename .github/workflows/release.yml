@@ -17,8 +17,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
-          cache: 'yarn'
+          node-version: '16.x'
+          cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Can Publish
@@ -27,10 +27,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Install
-        run: 'yarn --frozen-lockfile'
+        run: 'pnpm --frozen-lockfile'
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Publish
         run: npm publish
