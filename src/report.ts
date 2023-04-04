@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
+import { parseChunked } from '@discoveryjs/json-ext';
 import { StatsType } from './types';
 import { getBuildOutputDirectory, getOptions, getStatsFilePath } from './utils';
 
@@ -27,9 +28,11 @@ async function generateAnalysisJson() {
     getBuildOutputDirectory(options)
   );
 
-  const statsFile: StatsType = await import(
-    path.join(process.cwd(), getStatsFilePath(options))
-  ).then((module) => module.default);
+  const statsFile: StatsType = await parseChunked(
+    fs.createReadStream(path.join(process.cwd(), getStatsFilePath(options)), {
+      encoding: 'utf-8',
+    })
+  );
 
   try {
     fs.accessSync(buildOutputDir, fs.constants.R_OK);
