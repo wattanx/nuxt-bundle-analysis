@@ -1,0 +1,20 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "report": "node ../dist/report.js",
+    "compare": "node ../dist/compare.js"
+  },
+  "dependencies": {
+    "nuxt": "2.16.3"
+  },
+  "devDependencies": {},
+  "nuxtBundleAnalysis": {
+    "statsFile": ".nuxt/stats/client.json"
+  }
+}
