@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ts test > Snapshot of comparison results 1`] = `
+"
+<!-- __NUXTJS_BUNDLE -->
+# Bundle Size
+| Route | Size (gzipped) |
+| --- | --- |
+| \`app\` | 89.96 kB (🟢 -39 B) |
+| \`pages/index\` | 2.99 kB (🔴 983 B) |
+| \`components/nuxt-logo\` | 1.01 kB (added) |
+| \`components/tutorial\` | 2.93 kB (🟢 -16 B) |
+| \`pages/test\` | removed |"
+`;
+
+exports[`ts test > comparison results test 1`] = `
+"
+<!-- __NUXTJS_BUNDLE -->
+# Bundle Size
+| Route | Size (gzipped) |
+| --- | --- |
+| \`app\` | 89.96 kB (🟢 -39 B) |
+| \`pages/index\` | 2.99 kB (🔴 983 B) |
+| \`components/nuxt-logo\` | 1.01 kB (added) |
+| \`components/tutorial\` | 2.93 kB (🟢 -16 B) |
+| \`pages/test\` | removed |"
+`;
