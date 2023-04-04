@@ -61,3 +61,11 @@ See [here](#Options) for options.
 ## GitHub Actions Sample
 
 [actions-template](https://github.com/wattanx/nuxt-bundle-analysis/tree/main/actions-template/nuxt-bundle-analysis.yml)
+
+## Caveats
+
+Since this Actions works by comparing the base bundle to each PR, the first time it is run it will fail because there is no base to compare.
+
+Ideally, the changes would be committed directly to the default branch, where the base bundle would be generated, and the subsequent branch would be a valid comparison so that the script would work as expected.
+
+Actions are executed at each timing of merge into the main branch or PR as follows.
