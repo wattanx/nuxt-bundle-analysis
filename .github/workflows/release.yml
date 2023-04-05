@@ -27,7 +27,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Install
-        run: 'pnpm --frozen-lockfile'
+        run: 'pnpm install --frozen-lockfile'
 
       - name: Build
         run: pnpm build
