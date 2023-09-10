@@ -1,5 +1,6 @@
 export type NuxtBundleAnalysisOptions = {
   buildOutputDirectory: string;
+  clientDir: string;
   statsFile: string;
   minimumChangeThreshold: number;
 };

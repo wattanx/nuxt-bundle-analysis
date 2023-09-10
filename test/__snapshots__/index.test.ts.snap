@@ -6,7 +6,7 @@ exports[`ts test > Snapshot of comparison results 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 89.96 kB (🟢 -39 B) |
+| \`app\` | 89.92 kB (🟢 -77 B) |
 | \`pages/index\` | 2.99 kB (🔴 983 B) |
 | \`components/nuxt-logo\` | 1.01 kB (added) |
 | \`components/tutorial\` | 2.93 kB (🟢 -16 B) |
@@ -19,7 +19,7 @@ exports[`ts test > comparison results test 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 89.96 kB (🟢 -39 B) |
+| \`app\` | 89.92 kB (🟢 -77 B) |
 | \`pages/index\` | 2.99 kB (🔴 983 B) |
 | \`components/nuxt-logo\` | 1.01 kB (added) |
 | \`components/tutorial\` | 2.93 kB (🟢 -16 B) |

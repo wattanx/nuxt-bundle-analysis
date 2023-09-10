@@ -21,6 +21,13 @@ export const getBuildOutputDirectory = (options: NuxtBundleAnalysisOptions) => {
 };
 
 /**
+ * Gets the client directory, defaults to `dist/client`
+ */
+export const getClientDir = (options: NuxtBundleAnalysisOptions) => {
+  return options.clientDir || 'dist/client';
+};
+
+/**
  * Gets the stats file path.
  */
 export const getStatsFilePath = (options: NuxtBundleAnalysisOptions) => {
