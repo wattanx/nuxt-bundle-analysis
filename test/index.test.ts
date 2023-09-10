@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import fs from 'fs';
 
 describe('ts test', () => {

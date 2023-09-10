@@ -5,7 +5,12 @@ import path from 'path';
 import zlib from 'zlib';
 import { parseChunked } from '@discoveryjs/json-ext';
 import { StatsType } from './types';
-import { getBuildOutputDirectory, getOptions, getStatsFilePath } from './utils';
+import {
+  getBuildOutputDirectory,
+  getClientDir,
+  getOptions,
+  getStatsFilePath,
+} from './utils';
 
 const memoryCache: { [scriptPath: string]: number } = {};
 
@@ -28,6 +33,8 @@ async function generateAnalysisJson() {
     getBuildOutputDirectory(options)
   );
 
+  const clientDir = getClientDir(options);
+
   const statsFile: StatsType = await parseChunked(
     fs.createReadStream(path.join(process.cwd(), getStatsFilePath(options)), {
       encoding: 'utf-8',
@@ -48,7 +55,7 @@ async function generateAnalysisJson() {
       const size = value.assets
         .map((scriptPath) => {
           const gzipSize = getScriptSize(
-            path.join(buildOutputDir, 'dist/client', scriptPath)
+            path.join(buildOutputDir, clientDir, scriptPath)
           );
           return gzipSize;
         })
