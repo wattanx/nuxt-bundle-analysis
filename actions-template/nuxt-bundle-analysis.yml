@@ -15,15 +15,15 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '18.x'
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: yarn install
 
       - name: Build nuxt.js app
         run: yarn build
