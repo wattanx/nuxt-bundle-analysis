@@ -15,5 +15,5 @@ export type StatsType = {
 };
 
 export type namedChunkGroup = {
-  [key: string]: { assets: string[] };
+  [key: string]: { assets: string[] | { name: string; size: string }[] };
 };
