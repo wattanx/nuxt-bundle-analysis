@@ -53,7 +53,9 @@ async function generateAnalysisJson() {
   const allPageSizes = Object.entries(statsFile.namedChunkGroups).map(
     ([key, value]) => {
       const size = value.assets
-        .map((scriptPath) => {
+        .map((scriptInfo) => {
+          const scriptPath =
+            typeof scriptInfo === 'string' ? scriptInfo : scriptInfo.name;
           const gzipSize = getScriptSize(
             path.join(buildOutputDir, clientDir, scriptPath)
           );

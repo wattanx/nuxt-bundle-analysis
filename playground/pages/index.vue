@@ -1,9 +1,4 @@
 <template>
-  <Tutorial/>
+  <NuxtLogo />
+  <Tutorial />
 </template>
-
-<script>
-export default {
-  name: 'IndexPage'
-}
-</script>
