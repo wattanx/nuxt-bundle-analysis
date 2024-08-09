@@ -47,7 +47,7 @@
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
-    "@types/inquirer": "^8.2.1",
+    "@types/inquirer": "^9.0.0",
     "@types/mkdirp": "^1.0.2",
     "@types/node": "18",
     "typescript": "5.2.2",
