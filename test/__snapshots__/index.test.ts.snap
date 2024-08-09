@@ -6,7 +6,19 @@ exports[`ts test > Snapshot of comparison results 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 97.12 kB (🔴 7.12 kB) |
+| \`app\` | 97.6 kB (🟢 -2.4 kB) |
+| \`pages/index\` | removed |
+| \`components/tutorial\` | removed |
+| \`pages/test\` | removed |"
+`;
+
+exports[`ts test > comparison results test 1`] = `
+"
+<!-- __NUXTJS_BUNDLE -->
+# Bundle Size
+| Route | Size (gzipped) |
+| --- | --- |
+| \`app\` | 97.6 kB (🟢 -2.4 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
