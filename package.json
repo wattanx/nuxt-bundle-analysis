@@ -41,7 +41,7 @@
     "action"
   ],
   "dependencies": {
-    "@discoveryjs/json-ext": "^0.5.7",
+    "@discoveryjs/json-ext": "^0.6.0",
     "filesize": "^8.0.7",
     "inquirer": "^8.2.4",
     "mkdirp": "^1.0.4"
