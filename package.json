@@ -50,8 +50,6 @@
     "@types/inquirer": "^8.2.1",
     "@types/mkdirp": "^1.0.2",
     "@types/node": "18",
-    "esbuild": "0.19.3",
-    "esbuild-register": "3.5.0",
     "typescript": "5.2.2",
     "vite": "5.4.0",
     "vitest": "2.0.5"
