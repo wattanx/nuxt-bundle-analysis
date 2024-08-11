@@ -7,10 +7,12 @@ import { parseChunked } from '@discoveryjs/json-ext';
 import { StatsType } from './types';
 import {
   getBuildOutputDirectory,
+  getBuilder,
   getClientDir,
   getOptions,
   getStatsFilePath,
 } from './utils';
+import { getClientStats } from './vite/report';
 
 const memoryCache: { [scriptPath: string]: number } = {};
 
@@ -48,6 +50,18 @@ async function generateAnalysisJson() {
       `"${buildOutputDir} is not found" - you may not have your working directory set correctly, or not have run "nuxt build".`
     );
     process.exit(1);
+  }
+
+  if (getBuilder(options) === 'vite') {
+    const rawData = JSON.stringify(await getClientStats());
+    try {
+      fs.mkdirSync(path.join(buildOutputDir, 'analyze/'));
+    } catch (err) {}
+    fs.writeFileSync(
+      path.join(buildOutputDir, 'analyze/__bundle_analysis.json'),
+      rawData
+    );
+    return;
   }
 
   const allPageSizes = Object.entries(statsFile.namedChunkGroups).map(

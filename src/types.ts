@@ -3,6 +3,10 @@ export type NuxtBundleAnalysisOptions = {
   clientDir: string;
   statsFile: string;
   minimumChangeThreshold: number;
+  /**
+   * @default 'webpack'
+   */
+  builder?: 'webpack' | 'vite';
 };
 
 export type BundleAnalysisType = {

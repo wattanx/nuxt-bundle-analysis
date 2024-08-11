@@ -38,3 +38,9 @@ export const getMinimumChangeThreshold = (
 ): number => {
   return options.minimumChangeThreshold || 0;
 };
+
+export const getBuilder = (options: NuxtBundleAnalysisOptions) => {
+  return (
+    options.builder || process.env.NUXT_BUNDLE_ANALYSIS_BUILDER || 'webpack'
+  );
+};
