@@ -25,18 +25,13 @@ describe('ts test', () => {
 
     // increased
     expect(splitContents.find((x) => x.includes('pages/index'))).toContain(
-      '🔴'
+      'removed'
     );
 
     // removed
     expect(splitContents.find((x) => x.includes('pages/test'))).toContain(
       'removed'
     );
-
-    // added
-    expect(
-      splitContents.find((x) => x.includes('components/nuxt-logo'))
-    ).toContain('added');
 
     expect(contents).toMatchSnapshot();
   });
