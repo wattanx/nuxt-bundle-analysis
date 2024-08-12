@@ -6,7 +6,7 @@ exports[`ts test > Snapshot of comparison results 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 97.6 kB (🟢 -2.4 kB) |
+| \`app\` | 97.67 kB (🟢 -2.33 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
@@ -18,7 +18,7 @@ exports[`ts test > Vite comparison results test 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 155.61 kB (🔴 55.61 kB) |
+| \`app\` | 155.83 kB (🔴 55.83 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
@@ -30,7 +30,7 @@ exports[`ts test > comparison results test 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 97.6 kB (🟢 -2.4 kB) |
+| \`app\` | 97.67 kB (🟢 -2.33 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
