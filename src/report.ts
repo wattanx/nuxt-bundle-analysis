@@ -35,14 +35,6 @@ async function generateAnalysisJson() {
     getBuildOutputDirectory(options)
   );
 
-  const clientDir = getClientDir(options);
-
-  const statsFile: StatsType = await parseChunked(
-    fs.createReadStream(path.join(process.cwd(), getStatsFilePath(options)), {
-      encoding: 'utf-8',
-    })
-  );
-
   try {
     fs.accessSync(buildOutputDir, fs.constants.R_OK);
   } catch (err) {
@@ -63,6 +55,14 @@ async function generateAnalysisJson() {
     );
     return;
   }
+
+  const clientDir = getClientDir(options);
+
+  const statsFile: StatsType = await parseChunked(
+    fs.createReadStream(path.join(process.cwd(), getStatsFilePath(options)), {
+      encoding: 'utf-8',
+    })
+  );
 
   const allPageSizes = Object.entries(statsFile.namedChunkGroups).map(
     ([key, value]) => {
