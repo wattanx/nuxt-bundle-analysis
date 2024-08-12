@@ -5,11 +5,7 @@ import fs from 'fs';
 import fsp from 'node:fs/promises';
 import path from 'path';
 import { BundleAnalysisType } from './types';
-import {
-  getBuildOutputDirectory,
-  getOptions,
-  getMinimumChangeThreshold,
-} from './utils';
+import { getOptions } from './utils';
 import { destr } from 'destr';
 
 async function loadJson<T>(file: string) {
@@ -24,12 +20,9 @@ function createTableRow(path: string, size: number, diffStr: string) {
 async function compare() {
   const options = await getOptions();
 
-  const minimumChangeThreshold = getMinimumChangeThreshold(options);
+  const { minimumChangeThreshold } = options;
 
-  const buildOutputDir = path.join(
-    process.cwd(),
-    getBuildOutputDirectory(options)
-  );
+  const buildOutputDir = path.join(process.cwd(), options.buildOutputDirectory);
 
   const outdir = path.join(buildOutputDir, 'analyze');
   const outfile = path.join(outdir, '__bundle_analysis_comment.txt');

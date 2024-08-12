@@ -5,12 +5,8 @@ import path from 'path';
 import zlib from 'zlib';
 import { parseChunked } from '@discoveryjs/json-ext';
 import { StatsType } from './types';
-import {
-  getBuildOutputDirectory,
-  getClientDir,
-  getOptions,
-  getStatsFilePath,
-} from './utils';
+import { getOptions } from './utils';
+import { getClientStats } from './vite/report';
 
 const memoryCache: { [scriptPath: string]: number } = {};
 
@@ -28,18 +24,7 @@ function getScriptSize(scriptPath: string) {
 
 async function generateAnalysisJson() {
   const options = await getOptions();
-  const buildOutputDir = path.join(
-    process.cwd(),
-    getBuildOutputDirectory(options)
-  );
-
-  const clientDir = getClientDir(options);
-
-  const statsFile: StatsType = await parseChunked(
-    fs.createReadStream(path.join(process.cwd(), getStatsFilePath(options)), {
-      encoding: 'utf-8',
-    })
-  );
+  const buildOutputDir = path.join(process.cwd(), options.buildOutputDirectory);
 
   try {
     fs.accessSync(buildOutputDir, fs.constants.R_OK);
@@ -49,6 +34,26 @@ async function generateAnalysisJson() {
     );
     process.exit(1);
   }
+
+  if (options.builder === 'vite') {
+    const rawData = JSON.stringify(await getClientStats());
+    try {
+      fs.mkdirSync(path.join(buildOutputDir, 'analyze/'));
+    } catch (err) {}
+    fs.writeFileSync(
+      path.join(buildOutputDir, 'analyze/__bundle_analysis.json'),
+      rawData
+    );
+    return;
+  }
+
+  const { clientDir } = options;
+
+  const statsFile: StatsType = await parseChunked(
+    fs.createReadStream(path.join(process.cwd(), options.statsFile), {
+      encoding: 'utf-8',
+    })
+  );
 
   const allPageSizes = Object.entries(statsFile.namedChunkGroups).map(
     ([key, value]) => {
