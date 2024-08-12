@@ -1,6 +1,7 @@
 import fsp from 'node:fs/promises';
 import { globby } from 'globby';
 import { join } from 'pathe';
+import zlib from 'zlib';
 import { getOptions } from '../utils';
 
 export async function getClientStats() {
@@ -24,7 +25,7 @@ async function analyzeSizes(pattern: string | string[], rootDir: string) {
     )?.isSymbolicLink();
 
     if (!isSymlink) {
-      const bytes = Buffer.byteLength(await fsp.readFile(path));
+      const bytes = zlib.gzipSync(await fsp.readFile(path)).byteLength;
       totalBytes += bytes;
     }
   }
