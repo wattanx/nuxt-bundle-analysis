@@ -1,10 +1,15 @@
 import fsp from 'node:fs/promises';
 import { globby } from 'globby';
 import { join } from 'pathe';
+import { getOptions } from '../utils';
 
 export async function getClientStats() {
   const rootDir = process.cwd();
-  const stats = await analyzeSizes('**/*.js', join(rootDir, '.output/public'));
+  const options = await getOptions();
+  const stats = await analyzeSizes(
+    '**/*.js',
+    join(rootDir, options.outputDirectory, 'public')
+  );
 
   return [stats];
 }

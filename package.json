@@ -43,6 +43,7 @@
   ],
   "dependencies": {
     "@discoveryjs/json-ext": "^0.6.1",
+    "defu": "^6.1.4",
     "destr": "^2.0.3",
     "filesize": "^8.0.7",
     "globby": "^14.0.2",

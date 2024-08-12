@@ -5,13 +5,7 @@ import path from 'path';
 import zlib from 'zlib';
 import { parseChunked } from '@discoveryjs/json-ext';
 import { StatsType } from './types';
-import {
-  getBuildOutputDirectory,
-  getBuilder,
-  getClientDir,
-  getOptions,
-  getStatsFilePath,
-} from './utils';
+import { getOptions } from './utils';
 import { getClientStats } from './vite/report';
 
 const memoryCache: { [scriptPath: string]: number } = {};
@@ -30,10 +24,7 @@ function getScriptSize(scriptPath: string) {
 
 async function generateAnalysisJson() {
   const options = await getOptions();
-  const buildOutputDir = path.join(
-    process.cwd(),
-    getBuildOutputDirectory(options)
-  );
+  const buildOutputDir = path.join(process.cwd(), options.buildOutputDirectory);
 
   try {
     fs.accessSync(buildOutputDir, fs.constants.R_OK);
@@ -44,7 +35,7 @@ async function generateAnalysisJson() {
     process.exit(1);
   }
 
-  if (getBuilder(options) === 'vite') {
+  if (options.builder === 'vite') {
     const rawData = JSON.stringify(await getClientStats());
     try {
       fs.mkdirSync(path.join(buildOutputDir, 'analyze/'));
@@ -56,10 +47,10 @@ async function generateAnalysisJson() {
     return;
   }
 
-  const clientDir = getClientDir(options);
+  const { clientDir } = options;
 
   const statsFile: StatsType = await parseChunked(
-    fs.createReadStream(path.join(process.cwd(), getStatsFilePath(options)), {
+    fs.createReadStream(path.join(process.cwd(), options.statsFile), {
       encoding: 'utf-8',
     })
   );

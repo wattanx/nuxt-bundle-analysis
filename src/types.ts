@@ -1,12 +1,21 @@
 export type NuxtBundleAnalysisOptions = {
+  /**
+   * @default '.nuxt'
+   */
   buildOutputDirectory: string;
   clientDir: string;
+  /**
+   * @default '.nuxt/stats/client.json'
+   */
   statsFile: string;
+  /**
+   * @default 0
+   */
   minimumChangeThreshold: number;
   /**
    * @default 'webpack'
    */
-  builder?: 'webpack' | 'vite';
+  builder: 'webpack' | 'vite';
   /**
    * @default '.output'
    */
