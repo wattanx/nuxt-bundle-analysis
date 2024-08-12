@@ -1,5 +1,6 @@
 import path from 'path';
 import { NuxtBundleAnalysisOptions } from './types';
+import { readPackageJSON } from 'pkg-types';
 
 /**
  * Reads options from `package.json`
@@ -7,9 +8,7 @@ import { NuxtBundleAnalysisOptions } from './types';
 export const getOptions = async (
   pathPrefix = process.cwd()
 ): Promise<NuxtBundleAnalysisOptions> => {
-  const json = await import(path.join(pathPrefix, 'package.json')).then(
-    (module) => module.default
-  );
+  const json = await readPackageJSON(path.join(pathPrefix, 'package.json'));
   return json.nuxtBundleAnalysis;
 };
 

@@ -2,6 +2,7 @@
 
 import filesize from 'filesize';
 import fs from 'fs';
+import fsp from 'node:fs/promises';
 import path from 'path';
 import { BundleAnalysisType } from './types';
 import {
@@ -9,6 +10,12 @@ import {
   getOptions,
   getMinimumChangeThreshold,
 } from './utils';
+import { destr } from 'destr';
+
+async function loadJson<T>(file: string) {
+  const raw = await fsp.readFile(file, 'utf-8');
+  return destr<T>(raw);
+}
 
 function createTableRow(path: string, size: number, diffStr: string) {
   return `| \`${path}\` | ${filesize(size)} (${diffStr}) |`;
@@ -27,13 +34,13 @@ async function compare() {
   const outdir = path.join(buildOutputDir, 'analyze');
   const outfile = path.join(outdir, '__bundle_analysis_comment.txt');
 
-  const currentBundle: BundleAnalysisType[] = await import(
+  const currentBundle: BundleAnalysisType[] = await loadJson(
     path.join(buildOutputDir, 'analyze/__bundle_analysis.json')
-  ).then((module) => module.default);
+  );
 
-  const baseBundle: BundleAnalysisType[] = await import(
+  const baseBundle: BundleAnalysisType[] = await loadJson(
     path.join(buildOutputDir, 'analyze/base/bundle/__bundle_analysis.json')
-  ).then((module) => module.default);
+  );
 
   const removedSizes = baseBundle
     .filter(({ path }) => !currentBundle.find((x) => x.path === path))

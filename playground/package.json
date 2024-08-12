@@ -1,14 +1,15 @@
 {
   "name": "playground",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
     "generate": "nuxi generate",
     "preview": "nuxi preview",
     "postinstall": "nuxi prepare",
-    "report": "node ../dist/report.js",
-    "compare": "node ../dist/compare.js"
+    "report": "node ../dist/report.mjs",
+    "compare": "node ../dist/compare.mjs"
   },
   "devDependencies": {
     "nuxt": "3.7.1",
