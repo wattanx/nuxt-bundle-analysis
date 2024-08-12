@@ -11,6 +11,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        builder: ['vite', 'webpack']
+
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -24,3 +29,5 @@ jobs:
 
       - name: Run tests
         run: pnpm run test
+        env:
+          NUXT_BUNDLE_ANALYSIS_BUILDER: ${{ matrix.builder }}
