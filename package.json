@@ -1,6 +1,6 @@
 {
   "name": "nuxt-bundle-analysis",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "type": "module",
   "description": "Analyzes each PR's impact on your nuxt.js app's bundle size and displays it using a comment.",
   "bin": {
