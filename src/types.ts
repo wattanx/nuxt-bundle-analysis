@@ -7,6 +7,10 @@ export type NuxtBundleAnalysisOptions = {
    * @default 'webpack'
    */
   builder?: 'webpack' | 'vite';
+  /**
+   * @default '.output'
+   */
+  outputDirectory: string;
 };
 
 export type BundleAnalysisType = {
