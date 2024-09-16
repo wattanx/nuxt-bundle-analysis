@@ -12,8 +12,8 @@
     "compare": "node ../dist/compare.mjs"
   },
   "devDependencies": {
-    "nuxt": "3.7.1",
-    "@nuxt/webpack-builder": "3.7.1"
+    "nuxt": "3.13.2",
+    "@nuxt/webpack-builder": "3.13.2"
   },
   "nuxtBundleAnalysis": {
     "statsFile": ".nuxt/analyze/client.json",
