@@ -16,9 +16,11 @@
     "test": "pnpm build && pnpm build:playground && pnpm dev:prepare && pnpm report && pnpm compare && vitest run",
     "test:update": "pnpm build && pnpm build:playground && pnpm dev:prepare && pnpm report && pnpm compare && vitest -u",
     "test:vite": "NUXT_BUNDLE_ANALYSIS_BUILDER=\"vite\" pnpm run test",
+    "test:vitePageAnalysis": "NUXT_BUNDLE_ANALYSIS_VITE_PAGE_ANALYSIS=\"true\" pnpm run test:vite",
     "minor": "npm version minor",
     "build": "unbuild",
     "build:playground": "pnpm --filter playground build",
+    "build:vite": "NUXT_BUNDLE_ANALYSIS_BUILDER=\"vite\" pnpm run build",
     "dev:prepare": "node scripts/test-prepare.mjs",
     "report": "pnpm --filter playground report",
     "compare": "pnpm --filter playground compare"

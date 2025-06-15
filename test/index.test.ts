@@ -1,6 +1,9 @@
 import fs from 'fs';
 
 const isVite = process.env.NUXT_BUNDLE_ANALYSIS_BUILDER === 'vite';
+const vitePageAnalysis =
+  process.env.NUXT_BUNDLE_ANALYSIS_VITE_PAGE_ANALYSIS === 'true';
+
 console.log(
   'process.env.NUXT_BUNDLE_ANALYSIS_BUILDER',
   process.env.NUXT_BUNDLE_ANALYSIS_BUILDER
@@ -50,11 +53,22 @@ describe('ts test', () => {
     expect(contents).toMatchSnapshot();
   });
 
-  it.skipIf(!isVite)('Vite comparison results test', () => {
+  it.skipIf(!isVite || vitePageAnalysis)('Vite comparison results test', () => {
     const contents = fs
       .readFileSync('playground/.nuxt/analyze/__bundle_analysis_comment.txt')
       .toString();
 
     expect(contents).toMatchSnapshot();
   });
+
+  it.skipIf(!isVite || !vitePageAnalysis)(
+    'Vite page analysis results test',
+    () => {
+      const contents = fs
+        .readFileSync('playground/.nuxt/analyze/__bundle_analysis_comment.txt')
+        .toString();
+
+      expect(contents).toMatchSnapshot();
+    }
+  );
 });

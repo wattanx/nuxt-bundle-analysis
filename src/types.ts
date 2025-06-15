@@ -20,6 +20,12 @@ export type NuxtBundleAnalysisOptions = {
    * @default '.output'
    */
   outputDirectory: string;
+  /**
+   * @default false
+   * When true and using vite builder, analyzes each page separately.
+   * When false, bundles all JS as 'app'.
+   */
+  vitePageAnalysis?: boolean;
 };
 
 export type BundleAnalysisType = {
