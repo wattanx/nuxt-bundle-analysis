@@ -18,7 +18,21 @@ exports[`ts test > Vite comparison results test 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 60.14 kB (🟢 -39.86 kB) |
+| \`app\` | 71.13 kB (🟢 -28.87 kB) |
+| \`pages/index\` | removed |
+| \`components/tutorial\` | removed |
+| \`pages/test\` | removed |"
+`;
+
+exports[`ts test > Vite page analysis results test 1`] = `
+"
+<!-- __NUXTJS_BUNDLE -->
+# Bundle Size
+| Route | Size (gzipped) |
+| --- | --- |
+| \`app\` | 62.14 kB (🟢 -37.87 kB) |
+| \`about\` | 3.27 kB (added) |
+| \`index\` | 3.11 kB (added) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"

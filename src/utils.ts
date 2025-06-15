@@ -17,5 +17,7 @@ export const getOptions = async (
     statsFile: '.nuxt/stats/client.json',
     builder: process.env.NUXT_BUNDLE_ANALYSIS_BUILDER || 'webpack',
     outputDirectory: '.output',
+    vitePageAnalysis:
+      process.env.NUXT_BUNDLE_ANALYSIS_VITE_PAGE_ANALYSIS === 'true' || false,
   });
 };
