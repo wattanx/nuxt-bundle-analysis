@@ -10,17 +10,21 @@ This is a bundle analysis tool for Nuxt applications that analyzes JavaScript bu
 
 ### Development Commands
 
-- `pnpm build` - Build the project
+- `pnpm build` - Build the project using unbuild
 - `pnpm test` - Run full test suite (builds everything, runs report & compare, then tests)
 - `pnpm test:update` - Update test snapshots
 - `pnpm test:vite` - Run tests with vite builder
 - `pnpm build:playground` - Build the playground Nuxt app
-- `pnpm report` - Generate bundle analysis JSON
-- `pnpm compare` - Compare current bundle with base bundle
+- `pnpm report` - Generate bundle analysis JSON (run from playground directory)
+- `pnpm compare` - Compare current bundle with base bundle (run from playground directory)
 
 ### Release Commands
 
 - `pnpm minor` - Bump minor version
+
+### Single Test Execution
+
+- `pnpm test -- -t "test name"` - Run a specific test by name
 
 ## Architecture
 
@@ -46,11 +50,14 @@ This is a bundle analysis tool for Nuxt applications that analyzes JavaScript bu
 4. **`src/vite/report.ts`** - Vite-specific analysis
 
    - Analyzes `.output/public` directory
-   - Aggregates JavaScript files
+   - Default: Aggregates all JavaScript files as single "app" bundle
+   - With `vitePageAnalysis: true`: Analyzes each page separately using `client.manifest.json`
 
 5. **`src/utils.ts`** - Configuration management
    - Reads from `package.json` → `nuxtBundleAnalysis` key
-   - Environment variable override: `NUXT_BUNDLE_ANALYSIS_BUILDER`
+   - Environment variable overrides:
+     - `NUXT_BUNDLE_ANALYSIS_BUILDER` - Set builder type
+     - `NUXT_BUNDLE_ANALYSIS_VITE_PAGE_ANALYSIS` - Enable page-level analysis
 
 ### File Paths
 
@@ -58,18 +65,35 @@ This is a bundle analysis tool for Nuxt applications that analyzes JavaScript bu
 - Base branch bundle: `.nuxt/analyze/base/bundle/__bundle_analysis.json`
 - PR comment: `.nuxt/analyze/__bundle_analysis_comment.txt`
 
+### Configuration
+
+Configuration in `package.json` under `nuxtBundleAnalysis`:
+```json
+{
+  "buildOutputDirectory": ".nuxt",
+  "outputDirectory": ".output",
+  "statsFile": ".nuxt/stats/client.json",
+  "minimumChangeThreshold": 0,
+  "builder": "webpack" | "vite",
+  "vitePageAnalysis": false
+}
+```
+
 ### Testing
 
 Uses vitest with snapshot testing. The test flow:
 
-1. Builds the project
-2. Runs report and compare commands
-3. Validates outputs against snapshots
+1. Builds the project and playground app
+2. Runs `test-prepare.mjs` to set up base bundle
+3. Executes report and compare commands
+4. Validates outputs against snapshots
 
 ### Builder Support
 
-- **Webpack**: Uses `stats.json` with named chunk groups
-- **Vite**: Directly analyzes build output directory
+- **Webpack**: Uses `stats.json` with named chunk groups for page-level analysis
+- **Vite**: 
+  - Default mode: Analyzes all JS files in `.output/public` as single bundle
+  - Page analysis mode: Uses `client.manifest.json` to analyze each page separately
 
 ## Key Patterns
 
@@ -77,3 +101,5 @@ Uses vitest with snapshot testing. The test flow:
 - Uses defu for merging options with defaults
 - GitHub Actions workflow identifies comments with `<!-- __NUXTJS_BUNDLE -->`
 - Graceful handling when no size changes detected
+- All sizes calculated as gzipped sizes
+- Monorepo setup using pnpm workspaces with playground as separate package
