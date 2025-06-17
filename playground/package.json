@@ -9,7 +9,8 @@
     "preview": "nuxi preview",
     "postinstall": "nuxi prepare",
     "report": "node ../dist/report.mjs",
-    "compare": "node ../dist/compare.mjs"
+    "compare": "node ../dist/compare.mjs",
+    "analyze": "nuxt analyze --no-serve"
   },
   "devDependencies": {
     "nuxt": "3.16.2",

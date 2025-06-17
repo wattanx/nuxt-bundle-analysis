@@ -6,7 +6,7 @@ exports[`ts test > Snapshot of comparison results 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 97.67 kB (🟢 -2.33 kB) |
+| \`app\` | 109.56 kB (🟢 -10.44 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
@@ -44,7 +44,7 @@ exports[`ts test > comparison results test 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 97.67 kB (🟢 -2.33 kB) |
+| \`app\` | 109.56 kB (🟢 -10.44 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
