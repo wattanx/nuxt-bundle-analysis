@@ -20,7 +20,6 @@
     "minor": "npm version minor",
     "build": "unbuild",
     "build:playground": "pnpm --filter playground build",
-    "build:vite": "NUXT_BUNDLE_ANALYSIS_BUILDER=\"vite\" pnpm run build",
     "dev:prepare": "node scripts/test-prepare.mjs",
     "report": "pnpm --filter playground report",
     "compare": "pnpm --filter playground compare"

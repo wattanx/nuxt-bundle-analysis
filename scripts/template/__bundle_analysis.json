@@ -1,5 +1,5 @@
 [
-  { "path": "app", "size": 120000 },
+  { "path": "app", "size": 110000 },
   { "path": "pages/index", "size": 2011 },
   { "path": "components/tutorial", "size": 2944 },
   { "path": "pages/test", "size": 1130 }
