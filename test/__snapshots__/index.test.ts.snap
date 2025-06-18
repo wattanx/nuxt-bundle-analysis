@@ -18,7 +18,7 @@ exports[`ts test > Vite comparison results test 1`] = `
 # Bundle Size
 | Route | Size (gzipped) |
 | --- | --- |
-| \`app\` | 192.51 kB (🔴 82.51 kB) |
+| \`app\` | 71.03 kB (🟢 -38.98 kB) |
 | \`pages/index\` | removed |
 | \`components/tutorial\` | removed |
 | \`pages/test\` | removed |"
