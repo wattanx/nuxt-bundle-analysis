@@ -6,23 +6,29 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  id-token: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4.0.0
+        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: v18
           registry-url: https://registry.npmjs.org/
           cache: pnpm
+
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Install
         run: 'pnpm install --frozen-lockfile'
@@ -32,5 +38,3 @@ jobs:
 
       - name: Publish to NPM
         run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
