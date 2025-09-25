@@ -27,8 +27,8 @@ importers:
         specifier: ^8.2.4
         version: 8.2.5
       mkdirp:
-        specifier: ^1.0.4
-        version: 1.0.4
+        specifier: ^3.0.0
+        version: 3.0.1
       pathe:
         specifier: ^1.1.2
         version: 1.1.2
@@ -8128,7 +8128,7 @@ snapshots:
 
   babel-walk@3.0.0-canary-5:
     dependencies:
-      '@babel/types': 7.27.0
+      '@babel/types': 7.27.6
 
   balanced-match@1.0.2: {}
 
@@ -8405,8 +8405,8 @@ snapshots:
 
   constantinople@4.0.1:
     dependencies:
-      '@babel/parser': 7.27.0
-      '@babel/types': 7.27.0
+      '@babel/parser': 7.27.5
+      '@babel/types': 7.27.6
 
   convert-source-map@2.0.0: {}
 
@@ -12245,8 +12245,8 @@ snapshots:
 
   with@7.0.2:
     dependencies:
-      '@babel/parser': 7.27.0
-      '@babel/types': 7.27.0
+      '@babel/parser': 7.27.5
+      '@babel/types': 7.27.6
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
 
