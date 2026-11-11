@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.1",
-    "@types/mkdirp": "^1.0.2",
+    "@types/mkdirp": "^2.0.0",
     "@types/node": "18",
     "typescript": "5.5.4",
     "unbuild": "^2.0.0",
